@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1641598491 source:c:\users\nagwatalaat\desktop\c projects\bin\lab-filestrem-write\main.cpp
+	<iostream>
+	<fstream>
+
