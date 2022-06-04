@@ -1,0 +1,32 @@
+<form #signup="ngForm" (ngSubmit)="add()">
+  <input
+    type="number"
+    [(ngModel)]="user.id"
+    name="id"
+    #field="ngModel"
+    [min]="1"
+  />
+  <p *ngIf="field.errors?.['min']">error message</p>
+  <br />
+  <input
+    type="number"
+    [(ngModel)]="user.name"
+    name="name"
+    #field="ngModel"
+    [gte]="4"
+    required
+  />
+  <p *ngIf="field.errors?.['gte']">error message</p>
+  <br />
+
+  <input
+    type="text"
+    [(ngModel)]="user.email"
+    name="email"
+    #field="ngModel"
+    email
+  />
+  <p *ngIf="field.errors?.['email']">error message</p>
+  <br />
+  <input type="submit" [disabled]="signup.invalid" />
+</form>

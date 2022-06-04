@@ -1,0 +1,127 @@
+==============lab2
+1- create instance : 
+     services > compute > EC2
+     laungh instance 
+    name :ITI-WepServer-1
+    generate new key <lab2-key>
+     -choose subnet
+	*ITI-WepServer-1*
+	public ip: 54.90.198.32
+	private ip : 172.31.16.102
+	key-file-name : Lab2-key.pem 
+
+2- create new volume for the instance 
+  services > compute > EC2
+  Elastic Block Store *on the left menue*
+  volumes create volume			
+3- attatch volume to instance 
+ click Action Btn 
+ attatch volume
+select target instance 		
+4- create file sys & mount point to the volume		   	 
+1- in the local terminal 
+cd ~/Downloads
+chmod 400 Lab2-key.pem
+ssh -i <filename>.pem ec2-user@<public-ip>
+ssh -i Lab2-key.pem ec2-user@54.90.198.32
+2- in the instance terminal
+     lsblk *to check for volume existence xvdf *
+     sudo mkfs.xfs /dev/xvdf create file system for that volume 
+    sudo mkdir /data 
+   sudo mount /dev/xvdf /data/
+   df -h *to see it's mounted properly*
+			
+             *ITI-WepServer-2*
+		public ip: 107.22.107.78
+		private ip : 172.31.41.102
+		kry-file-name : Lab2-key.pem 
+		ssh -i Lab2-key.pem ec2-user@107.22.107.78
+		
+6- install apache2 
+	unstall apache2
+		sudo yum install -y httpd 
+		sudo systemctl start httpd
+		sudo systemctl enable --now httpd
+	install php
+		sudo yum install php 
+		sudo yum install amazon-linux-extras -y 
+		sudo amazon-linux-extras enable php7.4
+			sudo yum clean metadata
+			sudo yum install php php-common php-pear -y
+			sudo yum install php php-{pear,cgi,common,curl,mbstring,gd,mysqlnd,gettext,bcmath,json,xml,fpm,intl,zip,imap}
+			
+7- create EFS shared
+	services > storage > EFS 
+	 	create file system
+	 		name <ITI-WP-SHARED>
+	 	click on target EFS
+	 		under Network tab 
+	 			save EFS ip's for 2 AZ
+	 		us-east-1a	172.31.31.172
+	 		us-east-1b 	172.31.32.114	
+	 go to EC2 > secuirty group > create
+	 	name it <EFS-SG> 
+	 	add inbound rule 
+	 	custom TCP 2049 0.0.0.0./0 *or idle your subnets*
+	 go back to storage > efs 
+	 	select target EFS 
+	 	network > manage 
+	 	select your secuirty group for the two subnets *add them to existed SG*
+	 click Attatch (on top right)
+	 	copy command for mount
+	 	sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0a927a76ab24b846d.efs.us-east-1.amazonaws.com:/ efs
+	 *In the terminal* 
+	 	sudo yum install nfs-utils 
+	 	sudo mkdir /var/www/html/wp
+	 	sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0a927a76ab24b846d.efs.us-east-1.amazonaws.com:/ /var/www/html/wp
+	 	edit /var/www/html/wp/index.html from one terminal & see what the other displays 
+	 	*EX:*
+	 	 in one of the two terminals 
+	 		sudo vim  /var/www/html/wp/index.html
+			add any html line to test 
+			visti public ips to see the output 
+			sudo rm  /var/www/html/wp/index.html after your done 
+8- download wordpress in  the shared file 
+	*on one of the two terminals*
+	make sure /var/www/html/wp is empty 
+	cd /var/www/html/wp
+	sudo wget https://wordpress.org/latest.tar.gz
+	sudo tar zxf latest.tar.gz
+		
+9- create shared amazon RDS 
+	1- services > EC2 > secuirty groups
+	create SG
+	name <mysql-sg>
+	inbound rules 
+	custom TCP 3306 0.0.0.0/0 
+	2- services > database > RDS
+		create database 
+		standard
+		engine <MYSQL>
+		templates <free tier>
+		setting 
+			db identifier <wp-shared-database>
+			master username admin
+			master password adminadmin
+			instance configuration 
+			storage enable storage autoscaling <uncheck>
+			connectivity 
+			AZ
+			secuirty group <mysql-sg> & discard the default 
+			create
+	3- under connectivety & secuirty tab
+		copy Endpoint *we gonna use it to login remotly *
+		wp-shared-database.cfzbjwfb9oqr.us-east-1.rds.amazonaws.com
+	
+	4-in one instance terminal 
+		sudo yum install mysql
+		mysql -h <Endpoint> -u <master-name> -p <master-pass> 
+		mysql -h wp-shared-database.cfzbjwfb9oqr.us-east-1.rds.amazonaws.com -u admin -p 
+		create database wordpress;
+		
+		*DO THE FOLLOWING FOR THE TWO INSTANCES*
+		*NOTE: USE THE SAME USER NAME & PASSWORD *
+			create user <username>@< instance private ip> identified by <pass>
+			GRANT ALL PRIVILEGES ON wordpress.* To <username>@< instance private ip>;
+			flush privileges;
+10- run installiation on the browser

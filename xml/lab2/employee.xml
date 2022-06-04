@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="employee.css"?>
+<employees>
+    <employee>
+        <name>Nagwa Talaat</name>
+              <phones>
+              <phone type="work">010833777</phone>
+              <phone type ="mobile">01288347374</phone>
+             <phone type ="home">03887747</phone>
+        </phones>
+  <address>
+            <street>tamazen</street>
+            <buildingnumber>11</buildingnumber>
+            <region>fleming</region>
+            <city>Alexandria</city>
+            <country>Egypt</country>
+        </address>
+  <email>nagwa@gmail.com</email>
+    </employee>
+    <employee>
+        <name>Malak Ali</name>
+         <phones>
+         <phone type="work">01056632822</phone>
+              <phone type ="mobile">012972312666</phone>
+             <phone type ="home">036654332</phone>
+             </phones>
+        <address>
+            <street>khalil</street>
+            <buildingnumber>12</buildingnumber>
+            <region>Mandara</region>
+            <city>Alexandria</city>
+            <country>Egypt</country>
+        </address>
+        <email>malak@gmail.com</email>
+    </employee>
+</employees>

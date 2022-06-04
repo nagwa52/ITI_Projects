@@ -1,0 +1,45 @@
+place {
+  background-color: #eee;
+  width: 100%;
+  margin: 10px auto;
+}
+library,
+books,
+parts,
+chapters,
+sections {
+  display: block;
+  margin-bottom: 10pt;
+  margin-left: 0pt;
+}
+library > location,
+description,
+librarian {
+  display: inline-block;
+  color: black;
+  font-size: 23pt;
+  font-weight: bold;
+  margin-bottom: 10pt;
+  margin-left: 0pt;
+}
+book > title,
+ISBN,
+author,
+preface {
+  display: inline-block;
+  color: darkblue;
+  font-size: 15pt;
+  font-weight: bold;
+  margin-bottom: 10pt;
+  margin-left: 0pt;
+}
+book,
+part,
+chapter,
+section,
+paragraph {
+  display: inline-block;
+  color: brown;
+  font-size: 15pt;
+  margin: 5px 0px;
+}

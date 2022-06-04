@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+      var op,num1,num2,resultat,op,i,answer,flag=true
+      
+      num1=prompt("please enter number1")
+      while(flag){
+           op=prompt("please enter operation")
+          num2 =prompt("please enter number2")
+          
+switch(op)
+    {
+    case '+': num1=(parseInt(num1)+parseInt(num2));
+    alert("the result is " + num1);
+    break;
+   
+    case '-': num1=(parseInt(num1)-parseInt(num2));
+    alert("the result is " + num1);
+    break;
+    case '*': num1=(parseInt(num1)*parseInt(num2));
+    alert("the result is " + num1);
+    break;
+    case '/': num1=(parseInt(num1)/parseInt(num2));
+    alert("the result is " + num1);
+    break;
+    } 
+    answer=prompt("do you want to continue? yes or no")
+    if(answer=="yes")
+    flag=true;
+  else flag=false;
+}
+   </script> 
+</body>
+</html>

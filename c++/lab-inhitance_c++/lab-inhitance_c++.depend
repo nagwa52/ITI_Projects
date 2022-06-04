@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1640605709 source:c:\users\nagwatalaat\desktop\c projects\bin\lab-inhitance_c++\main.cpp
+	<iostream>
+	<string.h>
+	<conio.h>
+

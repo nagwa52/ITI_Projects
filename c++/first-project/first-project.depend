@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1639417511 source:c:\users\nagwatalaat\desktop\c projects\bin\first-project\main.cpp
+	<cstdio>
+	<cmath>
+	<iostream>
+	<cstdlib>
+

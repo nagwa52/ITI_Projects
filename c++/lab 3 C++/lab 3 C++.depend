@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1640200050 source:c:\users\nagwatalaat\desktop\c projects\bin\lab 3 c++\main.cpp
+	<iostream>
+	<string.h>
+	<conio.h>
+

@@ -1,0 +1,18 @@
+library {
+  background-color: #000000;
+  width: 100%;
+}
+book {
+  display: block;
+  margin-bottom: 30pt;
+  margin-left: 0pt;
+}
+title,
+author {
+  color: #ff0000;
+  font-size: 20pt;
+}
+pubDate {
+  color: #00ff00;
+  font-size: 20pt;
+}

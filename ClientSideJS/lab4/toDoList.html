@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* container to center the block */
+      .container {
+        width: 600px;
+        height: auto;
+        margin: 35px auto;
+        font-family: "Times New Roman", Times, serif;
+        position: relative;
+        top: 50%;
+        border: 2px grey solid;
+        border-radius: 10px;
+      }
+
+      /* Remove margins, bullets and padding from the list */
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      ul li {
+        cursor: pointer;
+        position: relative;
+        padding: 15px 8px 12px 25px;
+        background: #fff;
+        font-size: 15px;
+        transition: 0.2s;
+      }
+
+      /* Darker background-color on hover */
+      ul li:hover {
+        background: #ddd;
+      }
+
+      /* When the check button is pressed
+add a background color and strike out text */
+      ul li.checked {
+        background: #777;
+        color: #fff;
+        text-decoration: line-through;
+      }
+
+      /* Style the close button */
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 12px 15px;
+      }
+
+      .close:hover {
+        background-color: red;
+        color: #fff;
+      }
+
+      /* Style the check button */
+      .check {
+        position: absolute;
+        right: 40px;
+        top: 0;
+        padding: 12px 15px;
+      }
+
+      .check:hover {
+        background-color: green;
+        color: white;
+      }
+
+      /* Style the control (text and add) */
+      .control {
+        padding: 30px 40px;
+        color: #555;
+        text-align: center;
+      }
+
+      /* Clear floats after the control */
+      .control:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .flex {
+        flex: auto;
+      }
+
+      /* the task label*/
+      #task {
+        margin: 0;
+        padding: 5px;
+        color: #000;
+        font-weight: bold;
+      }
+
+      /* Style the input */
+      input {
+        margin: 0;
+        border: 2px grey solid;
+        border-radius: 10px;
+        width: 80%;
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      /* Style the "Add" button */
+      .addBtn {
+        background-color: #0e86d4;
+        padding: 10px;
+        width: 30%;
+        color: #555;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 10px;
+      }
+
+      .addBtn:hover {
+        background-color: #0e86d4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <ul id="myUL">
+        <li class="checked">Attend Lect2</li>
+        <li>Complete lab 2</li>
+        <li>Complete Bonus</li>
+      </ul>
+
+      <div id="myDIV" class="control flex">
+        <label id="task"> Task </label>
+        <input type="text" id="myInput" placeholder="Title..." />
+        <span onclick="newElement()" class="addBtn">Add</span>
+      </div>
+    </div>
+    <script>
+      var myNodelist = document.getElementsByTagName("LI");
+      for (var i = 0; i < myNodelist.length; i++) {
+        var span = makeCloseButton();
+        myNodelist[i].appendChild(span);
+      }
+
+      //append the check button to the list
+      var myNodelist = document.getElementsByTagName("LI");
+      for (var i = 0; i < myNodelist.length; i++) {
+        var span = makeCheckButton();
+        myNodelist[i].appendChild(span);
+      }
+
+      var close = document.getElementsByClassName("close");
+      closeItem();
+
+      var check = document.getElementsByClassName("check");
+      checkItem();
+
+      // "Add" function
+      function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        if (inputValue === "") {
+          alert("You must write something!");
+        } else {
+          document.getElementById("myUL").appendChild(li);
+        }
+        document.getElementById("myInput").value = "";
+
+        var span = makeCloseButton();
+        li.appendChild(span);
+
+        var span = makeCheckButton();
+        li.appendChild(span);
+
+        closeItem();
+        checkItem();
+      }
+
+      function makeCloseButton() {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        return span;
+      }
+
+      function closeItem() {
+        for (var i = 0; i < close.length; i++) {
+          close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.display = "none";
+          };
+        }
+      }
+
+      function makeCheckButton() {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u2713");
+        span.className = "check";
+        span.appendChild(txt);
+        return span;
+      }
+
+      function checkItem() {
+        for (var i = 0; i < check.length; i++) {
+          check[i].onclick = function (ev) {
+            var div = this.parentElement;
+            div.classList.toggle("checked");
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

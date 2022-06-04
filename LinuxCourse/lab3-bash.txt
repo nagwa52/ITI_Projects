@@ -1,0 +1,165 @@
+1-MySQL Database
+	1-table inv_master
+		(k)invID	int
+		custname	varchar(100)
+		invdate		date
+		invtotal	float
+	2-tabe inv_detail
+		(k)seq	auto
+		(fk)invID	int
+		itemname	varchar(50)
+		unitprice	int
+		quantity	int
+2-Multi file script
+	1-checker
+		1-Database exists or no, if no create it
+		2-Check tables (not exist, create it)
+		3-invoice exists
+		4-invoice has details
+	2-dataop	(Refrential integrity)
+		1-Insert new invoice
+		2-Delete existing invoice
+		3-Display invoice
+	3-Menu
+	4-Main script
+	
+	
+	
+==============================================================================================	
+	CREATE TABLE inv_master (
+invid INT(6)  AUTO_INCREMENT PRIMARY KEY,
+custname VARCHAR(30) NOT NULL,
+invdate date,
+invtotal INT(10)
+)
+
+create table detail(
+     seq int(6) AUTO_INCREMENT,
+     itemname varchar(50),
+     invid int(6),
+     quantity int(6),
+     unitprice int(6),
+     primary key (seq),
+     foreign key (invid) references inv_master(invid)
+     );
+     
+   ==============================================================================================	
+   1-Menu
+menu.sh   
+#! /bin/bash
+
+######## script for creating a menu
+source dataop.sh
+function menu {
+
+   local option
+echo "1.insert"
+echo "2.delete"
+echo "3.selectdb"
+echo "Enter the option: "
+read option
+
+#echo ${option}
+
+case ${option} in
+
+
+    1) insert
+     ;;
+    2)
+       delete
+      ;;
+    3) selectdb
+     ;;
+
+     *)
+       echo -e  "invalid operation\n"
+    esac
+
+
+}
+menu
+
+
+
+
+
+
+=======================================================
+checker.sh
+
+#!/bin/bash
+### using them makes this script a lot more portable.
+#####exit codes 
+##        2:invoice file not exit
+##        3:invoice file has no read permission
+##        4:details file not exit
+##        5: details file has no read permission
+##        6:if table didnot exist
+function checker {
+###check if the data base exist or not
+RESULT=`mysqlshow --user=root --password=root lab3| grep -o lab3`
+if [ "$RESULT" == "lab3" ]; then
+    echo exist
+fi
+###check iif files exist or not
+
+
+[ ! -f invoice ] && exit 2
+[ ! -r invoice ] && exit 3
+[ ! -f details ] && exit 4
+[ ! -r details ] && exit 5 
+
+
+###check on tables if exist
+
+
+if mysql -u root -prot -D lab3 -e "show tables like 'inv_master';";then echo inv_master
+else echo inv_master didnot exist
+fi
+
+if
+mysql -u root -prooot -D lab3 -e "show tables like  'detail';" ;then echo detail
+else echo detail didnot exist
+fi
+
+}
+checker
+
+
+=====================================================================================
+
+dataop.sh 
+
+#!/bin/bash
+
+function dataop {
+
+query1=$( awk 'BEGIN{FS=":"}{print "insert into lab3.inv_master(custname,invdate,invtotal)values("$1","$2","$3");"}'  invoice  )
+
+mysql -u root -proot -e "${query1}" 
+
+query2=$(awk 'BEGIN{FS=":"}{print "insert into lab3.detail (itemname,invid,quantity,unitprice) values("$(1)","$(2)","$(3)","$(4)");"}' details)
+
+
+mysql -u root -proot -e "${query2}"  
+ 
+
+}
+dataop
+
+
+===============================================================================
+
+
+main.sh
+
+
+
+source menu.sh
+
+source checker.sh
+
+source dataop.sh
+
+==========================================================================

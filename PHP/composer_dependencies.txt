@@ -1,0 +1,5 @@
+create composer.json
+composer install
+composer validate
+composer dump_autoload
+ORM=> elequent & doctorin

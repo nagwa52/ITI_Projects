@@ -1,0 +1,25 @@
+<!-- <app-student-add></app-student-add> -->
+
+<button class="btn btn-primary" (click)="addStudent()">Add student</button>
+<table
+  class="table table-striped table-sm table-bordered table-hover table-inverse table-inverse table-responsive"
+>
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th>Id</th>
+      <th>name</th>
+      <th>age</th>
+      <th>Department number</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of studentlist">
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.age }}</td>
+      <td>{{ item.depno }}</td>
+      <td><a [routerLink]="['/students/details', item.id]">Details</a></td>
+    </tr>
+  </tbody>
+</table>

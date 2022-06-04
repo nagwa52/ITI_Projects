@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<members>
+
+
+    <member>
+        <id>3</id>
+        <Name>nagwa</Name>
+        <Phone>8965320054</Phone>
+        <Address>Alexandria</Address>
+        <Email>nagwatalaat52@gmail.com</Email>
+    </member>
+    <member>
+        <id>2</id>
+        <Name>randa</Name>
+        <Phone>8965320054</Phone>
+        <Address>Alexandria</Address>
+        <Email>randa52@gmail.com</Email>
+    </member>
+    <member>
+        <id>4</id>
+        <Name>hala</Name>
+        <Phone>88426462</Phone>
+        <Address>alex</Address>
+        <Email>hala@gmail.com</Email>
+    </member>
+</members>

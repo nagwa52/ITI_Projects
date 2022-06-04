@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn JavaScript</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .assign {
+        text-align: center;
+        padding-top: 20px;
+      }
+      .assign input {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #ddd;
+      }
+      .assign input:focus {
+        outline: none;
+        border-color: #ccc;
+      }
+      .assign [title="Current"] {
+        padding: 20px;
+        margin: 10px auto;
+        width: 610px;
+        background-color: #f1f0f0;
+      }
+      .assign .classes-list {
+        padding: 20px;
+        margin: 10px auto;
+        width: 610px;
+        background-color: #f1f0f0;
+      }
+      .assign .classes-list h5 {
+        margin: 0 0 10px;
+        text-align: left;
+      }
+      .assign .classes-list div span {
+        background-color: #ff5722;
+        padding: 6px 10px 8px;
+        margin-right: 5px;
+        border-radius: 6px;
+        color: white;
+        display: inline-flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="assign">
+      <input type="text" class="classes-to-add" placeholder="Add Classes" />
+      <input
+        type="text"
+        class="classes-to-remove"
+        placeholder="Remove Classes"
+      />
+      <div class="element current" title="Current" onclick="checkElement()">
+        Current Element
+      </div>
+      <div class="classes-list">
+        <h5>Current Element Class Lists</h5>
+        <div id="demo"></div>
+      </div>
+    </div>
+    <script>
+      //
+
+      let currBtn = document.querySelector(".element.current");
+
+      var addClassData = document.getElementsByClassName("classes-to-add")[0];
+      var removeClassData =
+        document.getElementsByClassName("classes-to-remove")[0];
+
+      function checkElement() {
+        if (addClassData && addClassData.value) {
+          addElement();
+        } else if (removeClassData && removeClassData.value) {
+          removeElement();
+        }
+      }
+      var baseDiv = document.getElementById("demo");
+      function addElement() {
+        var addClass =
+          document.getElementsByClassName("classes-to-add")[0].value;
+        let newDiv = document.createElement("div");
+        baseDiv.appendChild(newDiv);
+        newDiv.innerHTML = `${addClass}`;
+        newDiv.style.width = "auto";
+        newDiv.style.height = "auto";
+        newDiv.style.background = "orange";
+        newDiv.style.padding = "10px";
+        newDiv.style.margin = "10px";
+        newDiv.style.display = "inline-block";
+        newDiv.style.textAlign = "center";
+        newDiv.style.borderRadius = "10px";
+      }
+
+      function removeElement() {
+        let removeClass =
+          document.getElementsByClassName("classes-to-remove")[0].value;
+        console.log(baseDiv.child);
+      }
+    </script>
+  </body>
+</html>

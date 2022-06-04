@@ -1,0 +1,37 @@
+1-sudo apt install network manager
+2-sudo nano /etc/default/grub
+it will open the file and we will edit the line
+3-GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"
+4- sudo grub-mkconfig -o/boot/grub/grub.cfg
+5-sudo touch /etc/NetworkManager/conf.d/10-globally-managed-device.conf
+6-sudo reboot
+7-sudo nmcli c s
+8-sudo nmcli con add con-name iti type ethernet ifname eth0 autoconnect yes
+9- change the network to bridge
+10-sudo apt update
+11-sudo apt install firewalld
+12-sudo systemctl enable --now firewalld
+13-sudo apt install apache2
+14-sudo systemctl enable --now apache2
+15- sudo firewall-cmd --permanent --add-service=http
+16-sudo firewall-cmd --reload
+=========================================
+create a clone from vm1=> vm2
+in vm1:
+sudo nmcli con add con-name ExternalIF type ethernet ifname eth0 autoconnect yes ip4 192.168.1.200/24 gw4  192.168.1.1
+sudo nmcli con mod ExternalIF ipv4.dns 192.168.1.1
+sudo nmcli con up ExternalIF
+sudo nmcli con add con-name InternallIF type ethernet ifname eth1 autoconnect yes ip4 192.168.10.1/24
+sudo nmcli con up InternalIF
+in vm2:
+sudo nmcli con add con-name mylan type ethernet ifname eth0 autoconnect yes ip4 192.168.10.2/24 gw4  192.168.10.1
+sudo nmcli con mod mylan ipv4.dns 192.168.1.1
+sudo nmcli con up mylan 
+ping 4.2.2.2
+==========================================
+after that in vm1:
+sudo nmcli con mod ExternalIF connection.zone public
+sudo nmcli con mod InternalIF connection.zone external
+in vm2:
+ping 4.2.2.2
+sudo apt update

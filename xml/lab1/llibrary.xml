@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="library.css"?>
+<place>
+    <library>
+        <location>Alexandria</location>
+        <description>public library</description>
+        <librarian>Ahmed salem</librarian>
+        <books>
+            <book>
+                <title>Science in our life</title>
+                <ISBN>1256 </ISBN>
+                <author>James Bond</author>
+                <preface>Hello to my book</preface>
+                <parts>
+                    <part title="Science">
+                        <chapters>
+                            <chapter title="chapter one" summary="End of chapter one">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter one section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter one section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter title="chapter two" summary="End of chapter two">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter two section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter two section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter title="chapter three" summary="End of chapter three">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter three section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter three section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter three section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter three section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                    <part title="Science in part two">
+                        <chapters>
+                            <chapter title="chapter one" summary="End of chapter one">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter one section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter one section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter title="chapter two" summary="End of chapter two">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter two section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter two section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                </parts>
+            </book>
+            <book>
+                <title>Physics in our life</title>
+                <ISBN>7635 </ISBN>
+                <author>Carlos Bond</author>
+                <preface>Hello to my book</preface>
+                <parts>
+                    <part title="Physics ">
+                        <chapters>
+                            <chapter title="chapter one" summary="End of chapter one">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter one section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter one section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter title="chapter two" summary="End of chapter two">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter two section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter two section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter title="chapter three" summary="End of chapter three">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter three section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter three section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter three section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter three section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                    <part title="Science in part two">
+                        <chapters>
+                            <chapter title="chapter one" summary="End of chapter one">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter one section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter one section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter one section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter title="chapter two" summary="End of chapter two">
+                                <sections>
+                                    <section>
+                                        <paragraph>This is chapter two section one Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section one Paragraph two</paragraph>
+                                    </section>
+                                    <section>
+                                        <paragraph>This is chapter two section two Paragraph one</paragraph>
+                                        <paragraph>This is chapter two section two Paragraph two</paragraph>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                </parts>
+            </book>
+        </books>  |
+    </library>
+
+</place>

@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>Element</div>
+    <span>Element</span>
+    <p>Element</p>
+    <article>Element</article>
+    <section>Element</section>
+    <script>
+      let newDiv = document.querySelector("div");
+      let newSpan = document.querySelector("span");
+      let newP = document.querySelector("p");
+      let newArticle = document.querySelector("article");
+      let newSection = document.querySelector("section");
+      newDiv.addEventListener("click", function () {
+        console.log(`this is ${newDiv.tagName}`);
+      });
+      newSpan.addEventListener("click", function () {
+        console.log(`this is ${newSpan.tagName}`);
+      });
+      newP.addEventListener("click", function () {
+        console.log(`this is ${newP.tagName}`);
+      });
+      newArticle.addEventListener("click", function () {
+        console.log(`this is ${newArticle.tagName}`);
+      });
+      newSection.addEventListener("click", function () {
+        console.log(`this is ${newSection.tagName}`);
+      });
+    </script>
+  </body>
+</html>

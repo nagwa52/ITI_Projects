@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>Login page</title>
+    <style>
+      .container {
+        margin: auto;
+        padding: 10px;
+        width: 500px;
+        height: 400px;
+        background-color: #1bb31bbf;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      .forms {
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        background-color: white;
+        width: 350px;
+        height: 300px;
+      }
+      .input-au {
+        line-height: 43px;
+        border: 1px solid #e5e5e5;
+        font-size: 14px;
+        background-color: #e5e5e5;
+        padding: 0 17px;
+        margin: auto;
+        padding: 3px;
+        width: 270px;
+      }
+      .design {
+        margin: 12px 20px;
+        padding: 5px;
+      }
+      .btn-des {
+        /* line-height: 43px; */
+        border: 1px solid #e5e5e5;
+        font-size: 14px;
+        background-color: #1bb31bbf;
+        padding: 0 17px;
+        height: 53px;
+        margin: auto;
+        padding: 3px;
+        width: 270px;
+        color: white;
+      }
+      .alert-user {
+        margin: 4px;
+        padding: 3px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="login">
+      <div class="container">
+        <div class="forms">
+          <div class="design">
+            <input
+              class="input-au"
+              type="text"
+              name="userid"
+              placeholder="User name"
+            />
+          </div>
+          <div class="design">
+            <input
+              class="input-au"
+              type="password"
+              name="pswrd"
+              placeholder="Password"
+            />
+          </div>
+
+          <div class="design">
+            <input
+              class="btn-des"
+              type="button"
+              onclick="check(this.form)"
+              value="LOGIN"
+            />
+          </div>
+          <div class="notes">
+            Not registered?
+            <span style="color: rgb(81, 81, 241)">create an account</span>
+          </div>
+          <div class="alert-user"></div>
+        </div>
+      </div>
+    </form>
+    <script language="javascript">
+      function check(form) {
+        let decimal =
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        if (form.userid.value !== "") {
+          console.log("true user");
+        }
+        if (form.pswrd.value.match(decimal) && form.pswrd.value !== "") {
+          var myDiv = document.getElementsByClassName("alert-user");
+          myDiv[0].innerHTML = "welcome " + `${form.userid.value}`;
+        } else {
+          var myDiv = document.getElementsByClassName("alert-user");
+          myDiv[0].innerHTML =
+            "password must have 8 chars and upper case ,try another";
+        }
+      }
+    </script>
+  </body>
+</html>

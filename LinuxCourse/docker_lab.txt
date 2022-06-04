@@ -1,0 +1,57 @@
+==============install docker===========
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add --
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+===============Login to docker hub===============
+go to website https://hub.docker.com/
+username:nagwatalaat52
+password:nagwatalaat52
+sudo apt update
+sudo apt-get -y install python-pip
+sudo pip install docker-compose
+docker-compose –version
+mkdir ~/odoo
+nano docker-compose.yml
+version: '3'
+services:
+  odoo:
+    image: odoo:15.0
+    env_file: .env
+    depends_on:
+      - postgres
+    ports:
+      - "8069:8069"
+    volumes:
+      - data:/var/lib/odoo
+  postgres:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - db:/var/lib/postgresql/data/pgdata
+
+volumes:
+  data:
+  db:
+--------------------------------
+nano .env
+# postgresql environment variables
+POSTGRES_DB=postgres
+POSTGRES_PASSWORD=a_strong_password_for_user
+POSTGRES_USER=odoo
+PGDATA=/var/lib/postgresql/data/pgdata
+
+# odoo environment variables
+HOST=postgres
+USER=odoo
+PASSWORD=a_strong_password_for_user
+=======================================
+openssl rand -base64 30
+docker-compose up -d
+curl --head http://localhost:8069
+sudo systemctl start apache2
+in firefox browser :
+http://localhost:8069
+
+

@@ -1,0 +1,39 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install mysql-server
+sudo mysql 
+mysql>>
+CREATE DATABASE ITI;
+USE ITI;
+CREATE TABLE INVOICES(inv_id INT AUTO_INCREMENT PRIMARY KEY,inv_date DATE,cust_name VARCHAR(50),inv_total INT);
+CREATE TABLE INVOICES_DETAILS(seq INT AUTO_INCREMENT PRIMARY KEY,item_name VARCHAR(50),item_quantity INT ,item_unit_price INT,inv_id INT, FOREIGN KEY(inv_id) REFERENCES INVOICES(inv_id));
+//Change password for root
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+///////////////(ctrl+z) TO LOGOUT FROM MYSQL
+>>  create file for bash
+nano lab1.sh
+in file lab1.sh=>                                                                                                                 
+#!/bin/bash
+#mysql -u root -proot
+[ ! -f invoice.txt ] && exit 2
+[ ! -r invoice.txt ] && exit 3
+
+query=$(awk 'BEGIN {FS=":"} {print "insert into ITI.INVOICES (inv_date,cust_name,inv_total)values(\""$1"\",\""$2"\","$3");"}' invoice.txt)
+echo "${query}"
+mysql -u root -proot -e "${query}"
+================================
+>> create file invoice.txt
+nano invoice.txt
+
+2020-03-11:Nagwa:600
+2021-01-12:Nada:100
+2020-08-10:Ahmed:400
+================================
+>>bash -x lab1.sh
+show databases;
+show tables;
+select * from ITI.INVOICES;
+
+
+
+

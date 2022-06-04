@@ -1,0 +1,26 @@
+employees {
+  background-color: #eee;
+  width: 100%;
+  margin: 10px auto;
+}
+employee {
+  display: grid;
+  margin-bottom: 30pt;
+  margin-left: 0pt;
+}
+employee name {
+  color: black;
+  font-size: 26pt;
+  font-weight: bold;
+}
+phone {
+  color: crimson;
+  font-size: 20pt;
+  margin: 10px 0px;
+}
+address {
+  display: inline-block;
+  color: crimson;
+  font-size: 20pt;
+  margin: 10px 0px;
+}

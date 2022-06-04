@@ -1,0 +1,9 @@
+======================XML========================
++ => one or more 
+? => zero or one 
+* => wero or more
+Value of attribute always CDATA
+ID => must starts with  _ or letter or :
+<!ATTLIST car color (red | green) "red">
+]>
+=> red is the default value

@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="our-element">Our Element</div>
+    <p>Paragraph</p>
+    <script>
+      let deleteParag = document.querySelector("p");
+      deleteParag.remove();
+      let selectDiv = document.getElementById("our-element");
+      //// this is for start div
+      let startDiv = document.createElement("div");
+      startDiv.className = "start";
+      startDiv.title = "Start Element";
+      startDiv.setAttribute("data-value", "start");
+      startDiv.innerHTML = "start";
+      selectDiv.before(startDiv);
+      /// this is for end div
+      let endDiv = document.createElement("div");
+      endDiv.className = "End";
+      endDiv.title = "End Element";
+      endDiv.setAttribute("data-value", "End");
+      endDiv.innerHTML = "End";
+      selectDiv.append(endDiv);
+    </script>
+  </body>
+</html>
