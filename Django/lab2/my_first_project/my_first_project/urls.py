@@ -19,7 +19,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todo/', include('todo.urls')),
     path('actor/', include('actor.urls')),
     path('movie/', include('movie.urls')),
 

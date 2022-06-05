@@ -42,7 +42,6 @@ HELPER_APPS = [
 ]
 
 MY_CUSTOM_APPS = [
-    'todo',
     'movie',
     'actor',
 ]
